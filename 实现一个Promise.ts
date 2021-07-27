@@ -32,7 +32,7 @@ class MyPromise {
   }
 
   private rejected(error) {
-    setTimeout(() =>{
+    setTimeout(() => {
       if (this.currentState === PromiseState.PENDING) {
         this.currentState = PromiseState.REJECTED;
         this.value = error;
@@ -51,13 +51,14 @@ class MyPromise {
         : function (value) {
             return value;
           };
-  
+
     onRejected =
       typeof onRejected === "function"
         ? onRejected
         : function (error) {
             return error;
           };
+
     // 有结果的情况下以及重复调用 .then 触发
     if (_this.currentState === PromiseState.RESOLVED) {
       return (promise2 = new MyPromise(function (resolved, rejected) {
@@ -69,7 +70,7 @@ class MyPromise {
         }
       }));
     }
-  
+
     if (_this.currentState === PromiseState.REJECTED) {
       return (promise2 = new MyPromise(function (resolved, rejected) {
         let x = onRejected(_this.value);
@@ -80,7 +81,7 @@ class MyPromise {
         }
       }));
     }
-  
+
     // 状态是 pending 的话给把函数推入对应数组
     if (_this.currentState === PromiseState.PENDING) {
       return (promise2 = new MyPromise(function (resolved, rejected) {
@@ -92,7 +93,7 @@ class MyPromise {
             resolved(x);
           }
         });
-  
+
         _this.onRejectedArr.push(function () {
           let x = onRejected(_this.value);
           if (x instanceof MyPromise) {
@@ -103,5 +104,5 @@ class MyPromise {
         });
       }));
     }
-  };
+  }
 }
