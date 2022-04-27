@@ -7,7 +7,7 @@ function run(gen) {
   const g = gen();
   function next(data?) {
     const res = g.next(data);
-    if (res.deno) return res.value;
+    if  (res.deno) return res.value;
     res.value.then((data) => next(data));
   }
   next();
