@@ -86,7 +86,7 @@ function generator(cb) {
         }
       }
     }
-  })
+  })()
 }
 
 function babelTest() {
