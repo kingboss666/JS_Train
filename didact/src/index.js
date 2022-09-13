@@ -167,7 +167,6 @@ function performUnitOfWork(fiber) {
 let wipFiber = null
 let hookIndex = null
 
-//
 function updateFunctionComponent(fiber) {
   wipFiber = fiber
   hookIndex = 0
@@ -208,7 +207,6 @@ function useState(initial) {
   return [hook.state, setState]
 }
 
-// 
 function updateHostComponent(fiber) {
   if (!fiber.dom) {
     fiber.dom = createDom(fiber)
@@ -277,7 +275,6 @@ const Didact = {
   useState
 }
 
-
 /** @jsx Didact.createElement */
 function Counter() {
   const [state, setState] = Didact.useState(1)
@@ -287,6 +284,7 @@ function Counter() {
     </h1>
   )
 }
+
 const element = <Counter />
 const container = document.getElementById("root")
 Didact.render(element, container)
