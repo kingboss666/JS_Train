@@ -1,0 +1,8 @@
+node_modules
+.yarn
+pnpm-lock.yaml
+
+dist
+
+# misc
+.DS_Store
