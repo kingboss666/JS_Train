@@ -1,33 +1,34 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
+  devtool: 'source-map',
   // 指定构建环境
-  mode: "development",
+  mode: 'development',
   //入口
   entry: {
-    app: "./src/index",
+    app: './src/app.js'
   },
   output: {
-    path: path.resolve("./dist"),
-    filename: "js/[name].js",
-    publicPath: "/", //打包后的资源的访问路径前缀
+    path: path.resolve('./dist'),
+    filename: 'js/[name].js',
+    publicPath: '/' //打包后的资源的访问路径前缀
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
-      },
-    ],
+        loader: 'babel-loader'
+      }
+    ]
   },
   plugins: [
     // 使用html模版
     new HtmlWebpackPlugin({
       // 模版路径
-      template: "./index.html",
+      template: './index.html',
       // 压缩
-      minify: true,
-    }),
-  ],
-};
+      minify: true
+    })
+  ]
+}
